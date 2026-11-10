@@ -1,0 +1,868 @@
+\documentclass [prd,reprint,eqsecnum,nofootinbib]  {revtex4-1}
+\usepackage{amsfonts,amsmath,amscd,mathrsfs,xcolor,hyperref}
+\newcommand{\lang}[1]{\textcolor{blue}{#1}}
+\newcommand{\science}[1]{\textcolor{red}{#1}}
+\newcommand{\remove}[1]{\textcolor{green}{#1}}
+\def\SO{\mathsf{SO}}
+\def\so{\mathsf{so}}
+\def\SU{\mathsf{SU}}
+\def\cP{{\cal P}}
+\def\cD{{\cal D}}
+\def\cC{{\cal C}}
+\def\cL{{\cal L}}
+\def\w{\omega}
+\def\v{\wedge}
+%\usepackage[colorinlistoftodos, shadow]{todonotes} %notatki: paczka
+%Komendy do stosowania:
+%\todo{Comment on margin with line}
+%\todo[inline]{Comment in text}
+%\todo[noline]{Comment on margin without line}
+%\missingfigure{Missing picture here.}
+%\listoftodos %notatki: lista rzeczy do poprawy
+
+\begin{document}
+\title{%
+Local Maxwell symmetry and gravity}
+\author{\science{Elian Vey}}
+\affiliation{\science{Institute for Theoretical Cosmology, University of
+Asterion, 1 Nebula Way, Asterion}}
+\author{\science{Mira Solen}}
+\affiliation{\science{Institute for Theoretical Cosmology, University of
+Asterion, 1 Nebula Way, Asterion}}
+\date{\today}
+\begin{abstract}\noindent
+\lang{We discuss physical aspects of a theory obtained by gauging the
+AdS--Maxwell symmetry. The resulting theory combines Einstein gravity
+with an $\sf{SO(3,1)}$ Yang--Mills field. A second tetrad can be
+introduced and associated with a linear combination of the Lorentz
+and Maxwell connections. Taking this tetrad as a fundamental
+variable casts the theory into a first-order form of $f$--$g$
+gravity.}
+\science{We also analyze a homogeneous cosmological model, derive an
+exact gauge-field solution, and present a numerical example.}
+\end{abstract}
+\maketitle
+
+\section{Introduction}
+
+The Maxwell symmetry is an extension of Poincar\'e symmetry and is a
+\lang{symmetry of fields in a constant electromagnetic background}
+\cite{Bacry:1970ye}, \cite{Schrader:1972zd}. This symmetry is of
+interest \lang{from a purely algebraic perspective because it
+circumvents a well-known theorem that forbids a central extension of}
+this algebra (see e.g., \cite{Galindo:1967}, \cite{Soroka:2011tc},
+\cite{Gomis:2009dm}).
+
+\lang{Until recently, however, the Maxwell symmetry attracted
+relatively little attention. This is somewhat surprising because
+physical systems in constant electromagnetic backgrounds, or in
+closely related settings, occur frequently in physics. This suggests
+that the Maxwell symmetry may be physically relevant. For example,
+canonical noncommutativity (for a review, see
+\cite{Douglas:2001ba}) is ultimately related to quantum systems in
+constant electromagnetic backgrounds and their generalizations.
+Consequently, this symmetry may be relevant to noncommutative field
+theories, as noted in \cite{Doplicher:1994tu}. It may also be
+relevant to the quantum Hall effect.}
+
+\lang{Setting these speculations aside, we investigate the
+construction and properties of theories with local Maxwell
+invariance. In Sec.~II we review the formulation in
+\cite{Durka:2011nf} and derive its field equations. Sec.~III
+discusses possible relations between gauged Maxwell theories and
+bimetric gravity. Sec.~IV studies homogeneous cosmological solutions,
+and Sec.~V summarizes the results.}
+
+\section{Gauged Maxwell theory}
+
+\lang{We begin with definitions and then review results from
+\cite{Durka:2011nf}.}
+
+The starting point is a generalization of Maxwell symmetry in which
+the Poincar\'e subalgebra of the original Maxwell algebra
+\cite{Bacry:1970ye}, \cite{Schrader:1972zd} is replaced by its
+anti-de Sitter counterpart. \lang{Equivalently, we consider the
+symmetry algebra of complex scalar and Dirac fields on anti-de Sitter
+space in a constant electromagnetic background
+\footnote{A detailed discussion will be presented in a forthcoming
+paper.}. This algebra, isomorphic to
+$\sf{so}(3,1)\oplus\sf{so}(3,2)$, was discussed previously in
+\cite{Soroka:2006aj}, \cite{Bonanos:2010fw},
+\cite{Lukierski:2010dy} and has the following form}
+\cite{Durka:2011nf}
+\begin{align}
+&[\mathcal{P}_{a},\mathcal{P}_{b}]=i(\mathcal{M}_{ab}-\mathcal{Z}_{ab})\,
+,\nonumber\\
+&[\mathcal{M}_{ab},\mathcal{M}_{cd}]=-i(\eta_{ac}\mathcal{M}_{bd}+\ldots)\, ,\nonumber\\
+&[\mathcal{M}_{ab},\mathcal{Z}_{cd}]=-i(\eta_{ac}\mathcal{Z}_{bd}+\ldots)\,,\nonumber\\
+&[\mathcal{Z}_{ab},\mathcal{Z}_{cd}]=-i(\eta_{ac}\mathcal{Z}_{bd}+\ldots)\, ,\nonumber\\
+&[\mathcal{M}_{ab},\mathcal{P}_c]=-i(\eta_{ac}\mathcal{P}_{b}-\eta_{bc}\mathcal{P}_{a}),\quad
+[\mathcal{Z}_{ab},\mathcal{P}_{c}]=0\,,\label{1}
+\end{align}
+\lang{where $\ldots$ denotes three additional terms obtained by
+antisymmetrizing the pairs of indices $(ab)$ and $(cd)$. The
+original Maxwell algebra \cite{Soroka:2006aj,Bonanos:2010fw,
+Lukierski:2010dy} follows from Eq.~(\ref{1}) by a contraction that
+removes $\mathcal{M}_{ab}$ from the right-hand side of the first
+commutator and sets the entire right-hand side of the fourth
+commutator to zero.}
+
+\lang{We gauge this algebra by introducing the connection}
+\begin{equation}\label{2}
+\mathbb{A}_{\mu}=\frac{1}{2}\omega_\mu{}^{ab}
+\mathcal{M}_{ab}+\frac{1}{\ell}e_\mu{}^{a}
+\mathcal{P}_{a}+\frac{1}{2}h_\mu{}^{ab} \mathcal{Z}_{ab}\,,
+\end{equation}
+and its curvature
+\begin{equation}\label{3}
+\mathbb{F}_{\mu\nu}=\partial_\mu\mathbb{A}_{\nu}-\partial_\nu\mathbb{A}_{\mu}-i[\mathbb{A}_{\mu},\mathbb{A}_{\nu}]\,,
+\end{equation}
+\lang{which decomposes into Lorentz, translational, and Maxwell
+components:}
+\begin{equation}\label{4}
+\mathbb{F}_{\mu\nu}=\frac12\, F_{\mu\nu}^{ab}\, \mathcal{M}_{ab}
++\frac{1}{\ell}T_{\mu\nu}^{a}\,\mathcal{P}_{a}+ \frac12\,
+G_{\mu\nu}^{ab}\, \mathcal{Z}_{ab}\,,
+\end{equation}
+where
+\begin{eqnarray}
+F_{\mu\nu}^{ab}&=&R^{ab}_{\mu\nu}+\frac{1}{\ell^2}( e^a_\mu e^b_\nu- e^a_\nu e^b_\mu) \,,\label{5a}\\
+T_{\mu\nu}^{a}&=&D^\omega_\mu e^a_\nu -D^\omega_\nu e^a_\mu\,,\label{5b}\\
+G_{\mu\nu}^{ab}&=&D^\omega_\mu h^{ab}_\nu -D^\omega_\nu
+h^{ab}_\mu\nonumber-\frac{1}{\ell^2}( e^a_\mu e^b_\nu- e^a_\nu
+e^b_\mu)\\ &+&(h^{ac}_\mu h^{\quad b}_{\nu\,c}-h^{ac}_\nu h^{\quad
+b}_{\mu\,c})\, .\label{5c}
+\end{eqnarray}
+\lang{We define the Lorentz-covariant derivative by}
+\begin{equation*}
+D^\omega_\mu(\ast)\equiv
+\partial_\mu(\ast)-i[\omega_\mu,(\ast)].
+\end{equation*}
+
+\lang{The gauge transformations of the fields $h_\mu{}^{ab}$,
+$\omega_\mu{}^{ab}$, and $e_\mu{}^{a}$ are}
+\begin{eqnarray}
+        \delta_\Theta h^{ab}_{\mu}&=&D^\omega_\mu \tau^{ab}+
+h^{ac}_\mu(\lambda+\tau)_{c}^{\;\,b}+h^{bc}_\mu(\lambda+\tau)^{a}_{\;\;c}\label{6}\quad\\
+      \delta_\Theta \omega^{ab}_{\mu}&=& D^\omega_\mu \lambda^{ab}
+      \label{7}\\
+   \delta_\Theta e^{a}_{\mu}&=&-\lambda^a_{\;b}
+    \,e^b_\mu\,,\label{8}
+\end{eqnarray}
+where $\lambda^{ab}$ and $\tau^{ab}$ denote the \lang{parameters of the local}
+ Lorentz and Maxwell symmetries, respectively. The
+\lang{curvature components transform covariantly:}
+\begin{eqnarray}
+        \delta_\Theta G^{ab}_{\mu\nu}&=&-[\tau,F_{\mu\nu}]^{ab}-[(\lambda+\tau),G_{\mu\nu}]^{ab}\label{9}\\
+      \delta_\Theta F^{ab}_{\mu\nu}&=&-[\lambda,F_{\mu\nu}]^{ab}  \label{10}\\
+    \delta_\Theta
+    T^{a}_{\mu\nu}&=&-\lambda^a_{\;b}T^b_{\mu\nu}\,.\label{11}
+\end{eqnarray}
+\science{We have omitted the local translation transformations.
+In first-order gravity, these are related to diffeomorphisms (up to
+local Lorentz transformations and, in general, terms proportional to
+the field equations).}
+
+\science{A natural non-topological, Lorentz- and Maxwell-invariant
+four-form built from the gauge fields is the Einstein--Hilbert action
+with a cosmological term:}
+\begin{equation}
+S_{E} =\frac1{64\pi G}\,
+\int\epsilon_{abcd}\left(R_{\mu\nu}{}^{ab}e_{\rho}^{c}e_{\sigma}^{d}
+-\frac{\Lambda}{3}e_{\mu}^{a}e_{\nu}^{b}e_{\rho}^{ c}e_{\sigma}^{
+d}\right)\epsilon^{\mu\nu\rho\sigma}\label{12}
+\end{equation}
+\lang{Additional curvature-squared invariants are possible; their
+topological combinations do not affect the local equations of motion
+(see \cite{Durka:2011nf} and references therein).}
+
+We now comment on the relation between our construction and that in
+\cite{deAzcarraga:2010sw}. The authors construct curvatures similar
+to those in Eqs.~(\ref{5a})--(\ref{5c}), but use all possible
+geometric combinations invariant under local Lorentz transformations
+to build the action. Consequently, the theory in
+\cite{deAzcarraga:2010sw} \lang{manifestly breaks Maxwell symmetry.
+Its geometric action is therefore much richer than the one in}
+\cite{Durka:2011nf} and presented above.
+
+The Einstein action (\ref{12}) contains no Maxwell curvature $G$.
+\science{Curvature-squared wedge-product invariants can be
+topological, but metric contractions yield non-topological terms.
+There are two independent Lorentz-invariant quadratic contractions
+of the curvature of $\varpi$, corresponding to the two invariant
+bilinear forms on $\mathsf{so}(3,1)$.}
+\lang{The corresponding Yang--Mills action for the $\sf{SO(3,1)}$
+gauge group was obtained in \cite{Soroka:2011tc,Durka:2011nf}:}
+\begin{equation}\label{13}
+ S_{1}= -  \frac1{4\varrho_1}\,\int d^4x\, e\, \big( F_{\mu\nu}{}^{ab} + G_{\mu\nu}{}^{ab}\big) \big( F^{\mu\nu}{}_{ab} +
+    G^{\mu\nu}{}_{ab}\big)\, .
+\end{equation}
+\lang{Because $\epsilon^{abcd}$ is an invariant tensor of
+$\sf{SO(3,1)}$, there is a second manifestly gauge-invariant action:}
+\begin{equation}\label{13a}
+ S_{2}= -  \frac1{4\varrho_2}\,\int d^4x\, e\, \big( F_{\mu\nu}{}^{ab} + G_{\mu\nu}{}^{ab}\big) \big( F^{\mu\nu}{}^{cd} +
+    G^{\mu\nu}{}^{cd}\big) \epsilon_{abcd}\, .
+\end{equation}
+In the formulas above, $\varrho_1$ and $\varrho_2$ are
+dimensionless coupling constants.
+
+\lang{Using the explicit curvatures $F$ and $G$ in Eqs.~(\ref{5a})
+and (\ref{5c}), these actions simplify as follows. In particular,}
+$$
+F_{\mu\nu}{}^{ab}(\omega, e) + G_{\mu\nu}{}^{ab}(h,\omega,e) =
+H_{\mu\nu}{}^{ab}(\varpi)
+$$
+where $H_{\mu\nu}{}^{ab}(\varpi)$ is the curvature of
+$\varpi_{\mu}{}^{ab}\equiv\omega_{\mu}{}^{ab}+h_{\mu}{}^{ab}$.
+\lang{We henceforth treat $\varpi$ as an independent connection. The
+full action is the sum of the Einstein action (\ref{12}) and the two
+Yang--Mills terms:}
+\begin{align}
+S &= S_E + S_1 +S_2 \nonumber\\
+&=\frac{1}{64\pi
+G}\int\epsilon_{abcd}\left(R_{\mu\nu}{}^{ab}e_{\rho}^{c}e_{\sigma}^{d}
+-\frac{\Lambda}{3}e_{\mu}^{a}e_{\nu}^{b}e_{\rho}^{ c}e_{\sigma}^{
+d}\right)\epsilon^{\mu\nu\rho\sigma}\nonumber\\
+&-\frac14\,\int  e\, \left(\frac1{\varrho_1}\, H_{\mu\nu}{}^{ab}
+H^{\mu\nu}{}_{ab}+ \frac1{\varrho_2}\,H_{\mu\nu}{}^{ab}
+H^{\mu\nu}{}^{cd}\,\epsilon_{abcd}\right)\, .\label{14}
+\end{align}
+
+\lang{The field equations resulting from this action include the
+Einstein equations with a cosmological constant,}
+\begin{equation}\label{15a}
+    R_{\mu\nu}-\frac12\, g_{\mu\nu}\, R +\Lambda\, g_{\mu\nu}= 8\pi G T_{\mu\nu}
+\end{equation}
+whose right-hand side is the energy-momentum tensor of the field
+$H$
+\begin{align}
+    T_{\mu\nu} &= \frac{1}{\varrho_1}\left(H_{\mu\lambda}{}^{ab} H_\nu{}^\lambda{}_{ab} -
+    \frac14\, g_{\mu\nu}\,H_{\lambda\sigma}{}^{ab}
+    H^{\lambda\sigma}{}_{ab}\right) \nonumber\\
+    &+\frac{1}{\varrho_2}\left(H_{\mu\lambda}{}^{ab} H_\nu{}^\lambda{}^{cd} -
+    \frac14\, g_{\mu\nu}\,H_{\lambda\sigma}{}^{ab}
+    H^{\lambda\sigma}{}^{cd}\right)\epsilon_{abcd}\label{15}
+\end{align}
+
+
+The field equations for $\varpi$ differ slightly from the standard
+Yang-Mills form and read
+\begin{equation}\label{16}
+    \nabla^\mu \left(\frac1{\varrho_1}\, H_{\mu\nu}{}^{ab} +\frac1{\varrho_2}\,\epsilon^{abcd}
+    H_{\mu\nu}{}_{cd}\right)=0\,,
+\end{equation}
+Here, $\nabla$ acts on spacetime indices through the metric
+connection determined by the tetrad $e^a_\mu$, and on algebra
+indices through $\varpi$. \science{The Einstein--Cartan equation
+obtained by varying the independent Lorentz connection sets the
+spacetime torsion to zero in the absence of spin sources.}
+
+Unfortunately, a gauge theory with a noncompact gauge group is
+known to suffer from the unitarity problem at the quantum level
+\cite{Hsu:1980zt}. Moreover, even classically, coupling such a theory to gravity is
+problematic because its energy density is not
+positive definite, as can be seen explicitly by inspecting the
+$T_{00}$ component of the energy-momentum tensor in (\ref{15})
+above. We discuss this issue in more detail in Sec.~IV, where we
+investigate the properties of simple cosmological solutions of the
+theory defined by the action (\ref{14}).
+
+\section{Bi-metric interpretation}
+
+\lang{We briefly discuss the relation between the gauged Maxwell
+theory and bimetric theories. The gauge transformations of the
+connection $\varpi$ introduced above have the same formal structure
+as those of the gravitational connection $\omega$. We may therefore
+introduce a second tetrad one-form $f^a$ and its torsion two-form
+$\tau^a$:}
+\begin{equation}\label{17}
+    df^a + \varpi^a{}_b\wedge f^b=\tau^a\,.
+\end{equation}
+Having defined the new tetrad field $f^a$, we can construct another
+gauge-invariant action, which is the Einstein action for the fields
+$f$ and $\varpi$.
+\lang{In particular,}
+\begin{equation}
+S_{E'} =\frac1{64\pi G'}\,
+\int\epsilon_{abcd}\left(H_{\mu\nu}{}^{ab}f_{\rho}^{c}f_{\sigma}^{d}
+-\frac{\Lambda'}{3}f_{\mu}^{a}f_{\nu}^{b}f_{\rho}^{ c}f_{\sigma}^{
+d}\right)\epsilon^{\mu\nu\rho\sigma}\label{18}
+\end{equation}
+is manifestly gauge invariant, just as the Einstein action
+(\ref{12}) is. The theory defined by the sum $S_E+S_{E'}$
+\lang{strongly resembles the first-order $f$--$g$ theory of Isham,
+Salam, and Strathdee} \cite{Isham:1971gm} (see
+\cite{Banados:2008fi} for a recent discussion and references). A
+contact term can be added between the two metrics
+$g_{\mu\nu}=e_\mu{}^ae_\nu{}^b\eta_{ab}$ and
+$q_{\mu\nu}=f_\mu{}^af_\nu{}^b\eta_{ab}$. \science{Unlike standard
+bimetric models with two independent diffeomorphism symmetries, this
+construction has a single spacetime diffeomorphism symmetry from the
+outset. A metric contact term therefore does not reduce a
+$(\mathrm{Diff})^2$ symmetry here; it is invariant under the
+existing diagonal diffeomorphism symmetry.} The most general contact
+term considered here is
+\begin{equation}\label{19}
+    S_{cont} =
+   {M^2}(-g)^u(-q)^{(1/2-u)}\, V(g^{-1}q)
+\end{equation}
+\lang{where $(g^{-1}q)^\mu{}_\nu = g^{\mu\rho}q_{\rho\nu}$ and $V$ is
+a scalar potential constructed from this tensor.}
+
+\lang{Bimetric theories have been studied in a variety of contexts;
+see, for example, \cite{Banados:2008fi,Damour:2002wu,Damour:2002ws,
+ArkaniHamed:2002sp,Blas:2005yk,Speziale:2010cf} and the review
+\cite{Clifton:2011jh}. Whether local Maxwell symmetry has a natural
+role in brane-world models, Kaluza--Klein theories, or noncommutative
+geometry is left for future work.}
+
+\section{Example: a simple cosmological model}
+
+\lang{We now study a homogeneous cosmological sector of the model
+defined by the action (\ref{14}), including the issue of
+non-positive energy discussed in Sec.~II.}
+
+\lang{We use the spatially flat Friedmann--Robertson--Walker (FRW)
+metric}
+\begin{equation}\label{20}
+    ds^2 =-N(t)^2dt^2+a(t)^2 (dx^2+dy^2+dz^2)
+\end{equation}
+\lang{We derive the reduced dynamics from the variational principle.
+Substituting the metric (\ref{20}) into the Einstein action (\ref{12})
+and suppressing the (formally infinite) comoving spatial volume gives}
+\begin{equation}
+S_E=\frac{1}{8\pi G}\int dt \left(-\frac{3}{N}a\dot a^2-\Lambda a^3
+N\right)\,.\label{21}
+\end{equation}
+
+\lang{We next impose the spatial symmetries of the FRW background.
+Rotationally invariant tensors are built from the Kronecker delta and
+the three-dimensional Levi-Civita tensor. The nonzero components of
+the connection $\varpi$ are therefore}
+\begin{equation}\label{22}
+    \varpi_i{}^{0\alpha} = f(t)\, \delta_i^\alpha\,,
+    \quad \varpi_i{}^{\alpha\beta} = g(t)\,
+    \epsilon_i{}^{\alpha\beta}\,,\quad \alpha,\beta=1,2,3\,.
+\end{equation}
+\lang{The appendix gives the symmetry-reduction argument for this ansatz.}
+
+\lang{Substituting this ansatz and the metric (\ref{20}) into $S_1$
+in Eq.~(\ref{13}) gives}
+\begin{equation}
+    S_1 =\frac1{\varrho_1}\int dt \left( \frac{3a}{N}\Big(\dot{g}^2 -\dot{f}^2\Big)
++ \frac{3N}{a} g^2\Big(4f^2-g^2\Big) \right)\label{23}
+\end{equation}
+\lang{The action $S_2$ in Eq.~(\ref{13a}) becomes}
+\begin{equation}
+    S_2 =\frac1{\varrho_2}\int dt \left( \frac{12a}{N}\, \dot f\,\dot g - \frac{24N}{a}\, f\, g^3\right)\label{24}
+\end{equation}
+\lang{For $\varrho_1>0$, the kinetic term for $f$ in Eq.~(\ref{23})
+has the opposite sign from that for $g$, and the potential is
+unbounded below along some field directions. These features reflect
+the indefinite invariant form of the noncompact gauge algebra.}
+
+\lang{Varying $S_E+S_1+S_2$ with respect to the scale factor $a(t)$
+and lapse $N(t)$ gives the Friedmann equations. The lapse is varied
+before choosing cosmic time, $N(t)=1$:}
+\begin{align}
+\left(\frac{\dot{a}}{a} \right)^2-\frac{\Lambda}{3}
+ &=\frac{8\pi G}{3\varrho_1}\left[\frac{3}{a^2} \left(\dot g^2 - \dot
+ f^2\right)
+ -\frac{3}{a^4}\,g^2\left(4f^2-g^2\right)\right]\nonumber\\
+ &+\frac{8\pi G}{3\varrho_2}\left[\frac{12}{a^2}\, \dot f \dot g +\frac{24}{a^4}\,f\, g^3\right]\,.\label{25}
+\end{align}
+\lang{The second equation is}
+\begin{align}
+\frac{2\ddot a}{a} &+ \left(\frac{\dot a}{a}\right)^2 - \Lambda
+ =-\frac{8\pi G}{3\varrho_1}\left[\frac{3}{a^2} \left(\dot g^2 - \dot
+ f^2\right)\right.\nonumber\\
+ &-\left.\frac{3}{a^4}\,g^2\left(4f^2-g^2\right)\right]
+ -\frac{8\pi G}{3\varrho_2}\left[\frac{12}{a^2}\, \dot f \dot g +\frac{24}{a^4}\,f\, g^3\right]\label{26}
+\end{align}
+\lang{Comparing these equations with the standard Friedmann
+equations,}
+$$
+\left(\frac{\dot{a}}{a} \right)^2-\frac\Lambda3=\frac{8\pi
+G}{3}\varepsilon\, , \quad \ddot a -\frac{\Lambda a}3=-\frac{4\pi
+G}{3}(\varepsilon+3p)a
+$$
+\lang{we identify the energy density as}
+\begin{align}
+    \varepsilon&= \frac{1}{\varrho_1}\left[\frac{3}{a^2} \left(\dot g^2 - \dot
+ f^2\right)
+ -\frac{3}{a^4}\,g^2\left(4f^2-g^2\right)\right]\nonumber\\
+ &+\frac{1}{\varrho_2}\left[\frac{12}{a^2}\, \dot f \dot g +\frac{24}{a^4}\,f\, g^3\right]\label{27}
+\end{align}
+\lang{which is not positive definite. The pressure is}
+\begin{equation}\label{28}
+    p=\frac\varepsilon3
+\end{equation}
+ \science{The relation $p=\varepsilon/3$ follows from the vanishing
+trace of the four-dimensional Yang--Mills stress tensor. Consequently,
+the gauge sector redshifts as radiation: $\varepsilon=\mathcal R/a^4$,
+where $\mathcal R$ is a constant fixed by the gauge-field initial
+data. Define $\mathcal K\equiv 8\pi G\mathcal R/3$. For
+$\mathcal K>0$, the expanding branches are shown below; contracting
+branches follow by time reversal:}
+\begin{align*}
+ &\remove{a(t)= C \sqrt{2 (t-t_0)}}\,, &\remove{\Lambda=0}\\
+ &\remove{a(t)= C \sqrt{\cos \left(\sqrt{\frac{|\Lambda|}{3} } \left(2 (t-t_0)\right)\right)}}\,, &\remove{\Lambda<0}\\
+ &\remove{a(t)= C \sqrt{\cosh \left(\sqrt{\frac{|\Lambda|}{3} } \left(2 (t-t_0)\right)\right)}}\,, &\remove{\Lambda>0}\\
+ &\science{a^2(t)=2\sqrt{\mathcal K}\,(t-t_B)}\,, &\science{\Lambda=0}\\
+ &\science{a^2(t)=\sqrt{\frac{3\mathcal K}{|\Lambda|}}\,
+\sin\!\left(2\sqrt{\frac{|\Lambda|}{3}}\,(t-t_B)\right)}\,, &\science{\Lambda<0}\\
+ &\science{a^2(t)=\sqrt{\frac{3\mathcal K}{\Lambda}}\,
+\sinh\!\left(2\sqrt{\frac{\Lambda}{3}}\,(t-t_B)\right)}\,, &\science{\Lambda>0}
+\end{align*}
+\science{Here $t_B$ is the zero of $a^2$; for $\Lambda<0$ the sine
+branch is restricted to intervals on which $a^2>0$ and describes a
+recollapsing universe. The first Friedmann equation requires
+$\varepsilon\geq-\Lambda/(8\pi G)$ wherever $H^2\geq0$. Thus
+$\varepsilon\geq0$ for $\Lambda=0$, while a positive cosmological
+constant permits a negative energy density down to this lower bound.
+This is a constraint on allowed homogeneous initial data, not a
+general positivity theorem for the gauge theory.}
+
+\lang{For completeness, the equations of motion for $g$ and $f$ are}
+\begin{equation}
+\frac1{\varrho_1}\left[ -(a\dot g)\dot{} + \frac{4}a\, gf^2 -
+\frac{2}a\, g^3\right] -\frac1{\varrho_2}\left[ (2a\dot f)\dot{} +
+\frac{12}a\, fg^2 \right]=0\label{29}
+\end{equation}
+and
+\begin{equation}
+\frac1{\varrho_1}\left[ (a\dot f)\dot{} + \frac{4}a\, g^2f \right]
+-\frac1{\varrho_2}\left[ (2a\dot g)\dot{} + \frac{4}a\, g^3
+\right]=0\label{30}
+\end{equation}
+\lang{On the gauge-field equations, stress-energy conservation
+reduces to the continuity equation}
+\begin{equation}\label{31}
+\dot \varepsilon +3H(\varepsilon+p)= \dot \varepsilon
++4H\varepsilon=0\,,
+\end{equation}
+\lang{where we used Eq.~(\ref{28}). Substituting Eq.~(\ref{27}) into
+Eq.~(\ref{31}) gives}
+\begin{equation}\label{32}
+    \dot g\, \mbox{\framebox{(\ref{29})}} +\dot f\, \mbox{\framebox{(\ref{30})}}=0\,.
+\end{equation}
+
+
+
+\lang{For a time-independent solution with $g\ne0$, Eq.~(\ref{30}) gives}
+\[
+f=\frac{\varrho_1}{\varrho_2}\,g.
+\]
+\lang{Eq.~(\ref{29}) then requires a nonzero constant solution to satisfy}
+\[
+\left(\frac{\varrho_1}{\varrho_2}\right)^2=-\frac1{4},
+\]
+which is impossible for real nonzero couplings. \remove{The assertion
+that the same conclusion follows for all profiles with
+$\dot f,\dot g\propto a^{-1}$ is not established here and is omitted.}
+\science{This argument excludes only constant solutions with
+$g\ne0$; the separate $g=0$ branch must be treated independently.}
+
+\section{Analytic and numerical solutions}
+
+\science{The absence of a constant solution with $g\ne0$ does not
+imply that the gauge-field equations have no nontrivial solutions. Introduce
+conformal time by $d\eta=dt/a(t)$ and denote $d/d\eta$ by a prime.
+For the consistent invariant branch $f(\eta)=0$, Eqs.~(\ref{29}) and
+(\ref{30}) reduce to}
+\begin{equation}
+\science{g''+2g^3=0.}
+\end{equation}
+\science{Its first integral is $g'^2+g^4=g_0^4$ for initial data
+$g(\eta_0)=g_0$, $g'(\eta_0)=0$. An exact solution is}
+\begin{equation}
+\science{f(\eta)=0,\qquad
+g(\eta)=g_0\,\operatorname{cn}\!\left(
+\sqrt{2}\,g_0(\eta-\eta_0),\,\frac{1}{\sqrt{2}}\right),}
+\end{equation}
+\science{where $\operatorname{cn}(u,k)$ is the Jacobi elliptic cosine
+with modulus $k$. On this branch, Eq.~(\ref{27}) gives
+$\mathcal R=a^4\varepsilon=3g_0^4/\varrho_1$, so $\varrho_1>0$
+provides a positive-radiation solution whose scale factor is given
+above. This explicitly supplies a nontrivial, time-dependent
+solution of the problem left open by the constant-field ansatz.}
+\science{For completeness, the $g=0$ branch also integrates directly:
+Eqs.~(\ref{29}) and (\ref{30}) give $f''=0$, hence
+$f(\eta)=f_0+c(\eta-\eta_0)$. Its radiation constant is
+$\mathcal R=-3c^2/\varrho_1$, illustrating explicitly that negative
+homogeneous gauge-field energy is possible when $\varrho_1>0$.}
+
+\science{For a numerical example with both gauge amplitudes nonzero,
+set $\varrho_1=\varrho_2=1$. The conformal-time equations are}
+{\color{red}
+\begin{align}
+f''&=\frac85\,g f^2-\frac{28}{5}\,f g^2,\nonumber\\
+g''&=\frac45\,g f^2-\frac45\,f g^2-2g^3.
+\end{align}}
+\begin{equation}
+\science{\mathcal R=
+\frac{3}{\varrho_1}\left[g'^2-f'^2-g^2(4f^2-g^2)\right]
++\frac{12}{\varrho_2}\left(f'g'+2fg^3\right).}
+\end{equation}
+\science{We integrated this autonomous system with classical
+fourth-order Runge--Kutta, step size $\Delta\eta=5\times10^{-5}$,
+and initial data $f(0)=0.2$, $g(0)=1$, $f'(0)=g'(0)=0$. The
+conserved quantity $\mathcal R=a^4\varepsilon$ for these data is
+$\mathcal R=7.32$. The table reports the numerical trajectory
+(rounded to the shown precision):}
+\begin{center}
+\color{red}
+\begin{tabular}{c|rrrr|r}
+$\eta$ & $f$ & $g$ & $f'$ & $g'$ & $\mathcal R$\\ \hline
+0.00 & 0.200000000 & 1.000000000 & 0.000000000 & 0.000000000 & 7.32\\
+0.05 & 0.198682565 & 0.997343611 & -0.052595037 & -0.106111377 & 7.32\\
+0.10 & 0.194760785 & 0.989417491 & -0.103975195 & -0.210507798 & 7.32\\
+0.15 & 0.188324405 & 0.976348712 & -0.152998445 & -0.311556643 & 7.32\\
+0.20 & 0.179517057 & 0.958342327 & -0.198661156 & -0.407782876 & 7.32
+\end{tabular}
+\end{center}
+\science{The constancy of $\mathcal R$ is a useful check on both the
+integration and the radiation equation of state. These data have
+$\mathcal R>0$ and therefore source an expanding flat-FRW solution
+for $\Lambda=0$ (or the corresponding branches for nonzero
+$\Lambda$). At $\eta=0.20$, halving the step size changes each
+reported gauge-field variable by less than $4\times10^{-16}$ in
+double precision. If we also set $8\pi G=1$, then
+$\mathcal K=\mathcal R/3=2.44$ and the $\Lambda=0$ scale factor is
+$a^2(t)=2\sqrt{2.44}\,(t-t_B)$.}
+
+\section{Conclusions}
+
+\science{We reviewed the gauged AdS--Maxwell construction and its
+interpretation as Einstein gravity coupled to a noncompact
+$\mathsf{SO}(3,1)$ Yang--Mills sector, with a possible second tetrad
+providing a bimetric interpretation. In the homogeneous, spatially
+flat cosmological sector, the Yang--Mills stress tensor is traceless,
+so its energy density scales as $a^{-4}$; its sign is not fixed by
+the field equations. We corrected the scale-factor solutions implied
+by the Friedmann equation, ruled out constant solutions with
+$g\ne0$ for real couplings, and exhibited both an
+exact elliptic-function solution and a reproducible numerical
+trajectory with nonzero $f$ and $g$. The latter conserves the
+radiation constant $\mathcal R$. A broader study of stability and of
+the allowed initial-data space remains necessary, particularly
+because the noncompact gauge group permits negative-energy
+configurations.}
+
+
+
+
+
+
+\appendix*
+\section{Cosmological gauge connection}
+
+\lang{In this appendix we derive the symmetry-reduced form of the
+gauge connection $\varpi_\mu{}^{ab}$ on a spatially flat FRW
+background. Its spatial isometries are translations and rotations,
+which form the three-dimensional Euclidean group. We raise and lower
+spatial indices with $\delta_{ij}$:}
+\begin{equation}\label{a1}
+    [R_i, R_j] = \epsilon_{ijk}\, R_k, \, [R_i, T_j] = \epsilon_{ijk}\, T_k, \, [T_i, T_j]
+    =0\, .
+\end{equation}
+The Killing vector fields of the flat FRW spacetime form a
+representation of this algebra
+\begin{align}
+T_i &= \frac{\partial}{\partial x^i}\nonumber \\ R_i
+&=\epsilon_{ijk}\, x^j \,\frac{\partial}{\partial x^k}\label{a2}
+\end{align}
+
+The gauge-field invariance under spacetime symmetries means that the
+Lie derivatives along the Killing vectors vanish up to gauge
+transformations \cite{Forgacs:1979zs,Jackiw:1979ub}:
+\begin{align}
+    {\cal L}_{T_i}\,\varpi_\mu^{ab} &= \partial_\mu \lambda^{(T)}_i{}^{ab}
+    + [\varpi_\mu,\lambda^{(T)}_i]^{ab}\,,\label{a3}\\  {\cal L}_{R_i}\,\varpi_\mu^{ab} &= \partial_\mu \lambda^{(R)}_i{}^{ab}
+    + [\varpi_\mu,\lambda^{(R)}_i]^{ab}\,.\label{a4}
+\end{align}
+\lang{These equations satisfy integrability conditions that follow
+from the identity}
+$$
+[{\cal L}_X, {\cal L}_Y] = {\cal L}_{[X,Y]}\, ,
+$$
+which gives the following consistency condition on the gauge parameters
+$\lambda$
+\begin{equation}\label{a5}
+{\cal L}_X\lambda^{(Y)}-{\cal L}_Y\lambda^{(X)}
+-[\lambda^{(X)},\lambda^{(Y)}] =\lambda^{([X,Y])}\,.
+\end{equation}
+For two translations, Eq.~(\ref{a5}) becomes
+\begin{equation}\label{a6}
+    \partial_i\lambda^{(T)}_j{}^{ab}-
+    \partial_j\lambda^{(T)}_i{}^{ab} -
+    [\lambda^{(T)}_i,\lambda^{(T)}_j]^{ab}=0\, .
+\end{equation}
+\science{This is the flatness condition for the compensating
+translation gauge parameters. Locally, on a simply connected spatial
+patch, a flat connection is pure gauge; choose that gauge so that
+$\lambda^{(T)}_i{}^{ab}=0$. This is a gauge choice, not a conclusion
+that the compensators vanish in every gauge.}
+
+With this choice, Eq.~(\ref{a5}) for rotations and translations
+reduces to the condition
+$$
+\partial_i\lambda^{(R)}_j{}^{ab}=0
+$$
+so $\lambda^{(R)}_j{}^{ab}$ is spatially constant. For two
+rotations, Eq.~(\ref{a5}) becomes
+\begin{equation}\label{a7}
+    [\lambda^{(R)}_i,\lambda^{(R)}_j]^{ab}=\epsilon_{ijk}\,
+    \lambda^{(R)}_k{}^{ab}\,,
+\end{equation}
+\lang{Thus the matrices $\lambda^{(R)}_i{}^{ab}$ form a
+representation of $\sf{SO(3)}$.}
+
+We can now return to Eqs.~(\ref{a3}) and (\ref{a4}), which reduce to
+\begin{align}
+    {\cal L}_{T_i}\,\varpi_\mu^{ab} &= 0\label{a8}\\  {\cal L}_{R_i}\,\varpi_\mu^{ab} &=  [\varpi_\mu,\lambda^{(R)}_i]^{ab}\label{a9}
+\end{align}
+\lang{Equation (\ref{a8}) implies that the connection depends only
+on time, $\varpi_\mu^{ab}(x,t)=\varpi_\mu^{ab}(t)$. Equation
+(\ref{a9}) then requires $\varpi_0^{ab}$ to commute with every
+rotation generator. The Lorentz algebra has no nonzero element that
+commutes with all spatial rotations, so $\varpi_0^{ab}=0$. For the
+spatial components,}
+\begin{equation}\label{a10}
+\epsilon_{ijk}\, \varpi_j^{ab}=[\varpi_k,\lambda^{(R)}_i]^{ab}
+\end{equation}
+\lang{We choose the standard embedding of the rotation generators
+into the Lorentz algebra $\sf{so}(3,1)$,}
+\begin{equation}\label{a11}
+\lambda^{(R)}_i{}^{\alpha\beta} = \epsilon_i{}^{\alpha\beta}\,,
+\quad\lambda^{(R)}_i{}^{\alpha0} =0\,, \quad \alpha,\beta=1,2,3
+\end{equation}
+\lang{Substituting this representation into Eq.~(\ref{a10}) gives
+two independent rotation-covariant structures:}
+\begin{equation}\label{a12}
+\varpi_j^{0\beta} =f(t) \, \delta_j^\beta\,, \quad \varpi_j^{\alpha\beta} =
+g(t)\, \epsilon_j{}^{\alpha\beta}
+\end{equation}
+which reproduce the ansatz in the main text.
+
+\begin{acknowledgments}
+\remove{[REMOVE: the original acknowledgments and funding statement
+refer to real individuals and grants and should not be attributed to
+the fictional authors.]}
+\end{acknowledgments}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{thebibliography}{99.}
+
+%\cite{Bacry:1970ye}
+\bibitem{Bacry:1970ye}
+  H.~Bacry, P.~Combe, J.~L.~Richard,
+  ``Group-theoretical analysis of elementary particles in an external electromagnetic field. 1.
+  the relativistic particle in a constant and uniform field,''
+  Nuovo Cim.\  {\bf A67 } (1970)  267-299.
+
+%\cite{Schrader:1972zd}
+\bibitem{Schrader:1972zd}
+  R.~Schrader,
+  ``The maxwell group and the quantum theory of particles in classical homogeneous electromagnetic fields,''
+  Fortsch.\ Phys.\  {\bf 20 } (1972)  701-734.
+
+  %\cite{Galindo:1967}
+\bibitem{Galindo:1967}
+  A.~Galindo,
+  ``Lie algebra extensions of the Poincar\'e Algebra,''
+  J.\ Math.\ Phys.\  {\bf 8 } (1967)  768.
+
+%\cite{Soroka:2011tc}
+\bibitem{Soroka:2011tc}
+  D.~V.~Soroka and V.~A.~Soroka,
+  ``Gauge semi-simple extension of the Poincar\'e group,''
+  arXiv:1101.1591 [hep-th].
+  %%CITATION = ARXIV:1101.1591;%%
+
+%\cite{Gomis:2009dm}
+\bibitem{Gomis:2009dm}
+  J.~Gomis, K.~Kamimura and J.~Lukierski,
+  ``Deformations of Maxwell algebra and their Dynamical Realizations,''
+  JHEP {\bf 0908}, 039 (2009)
+  [arXiv:0906.4464 [hep-th]].
+  %%CITATION = JHEPA,0908,039;%%
+
+  %\cite{Douglas:2001ba}
+\bibitem{Douglas:2001ba}
+  M.~R.~Douglas, N.~A.~Nekrasov,
+  ``Noncommutative field theory,''
+  Rev.\ Mod.\ Phys.\  {\bf 73 } (2001)  977-1029.
+  [hep-th/0106048].
+
+  %\cite{Doplicher:1994tu}
+\bibitem{Doplicher:1994tu}
+  S.~Doplicher, K.~Fredenhagen, J.~E.~Roberts,
+  ``The Quantum structure of space-time at the Planck scale and quantum fields,''
+  Commun.\ Math.\ Phys.\  {\bf 172 } (1995)  187-220.
+  [hep-th/0303037].
+
+%\cite{Bonanos:2009wy}
+\bibitem{Bonanos:2009wy}
+  S.~Bonanos, J.~Gomis, K.~Kamimura, J.~Lukierski,
+ ``Maxwell Superalgebra and Superparticle in Constant Gauge Backgrounds,''
+  Phys.\ Rev.\ Lett.\  {\bf 104}, 090401 (2010).
+  [arXiv:0911.5072 [hep-th]].
+
+%\cite{deAzcarraga:2010sw}
+\bibitem{deAzcarraga:2010sw}
+  J.~A.~de Azcarraga, K.~Kamimura, J.~Lukierski,
+  ``Generalized cosmological term from Maxwell symmetries,''
+  Phys.\ Rev.\  {\bf D83}, 124036 (2011).
+  [arXiv:1012.4402 [hep-th]].
+
+
+
+
+
+
+  %\cite{Soroka:2006aj}
+\bibitem{Soroka:2006aj}
+  D.~V.~Soroka, V.~A.~Soroka,
+  ``Semi-simple extension of the (super)Poincare algebra,''
+  Adv.\ High Energy Phys.\  {\bf 2009 } (2009)  234147.
+  [hep-th/0605251].
+
+  %\cite{Bonanos:2010fw}
+\bibitem{Bonanos:2010fw}
+  S.~Bonanos, J.~Gomis, K.~Kamimura, J.~Lukierski,
+  ``Deformations of Maxwell Superalgebras and Their Applications,''
+  J.\ Math.\ Phys.\  {\bf 51 } (2010)  102301.
+  [arXiv:1005.3714 [hep-th]].
+
+  %\cite{Lukierski:2010dy}
+\bibitem{Lukierski:2010dy}
+  J.~Lukierski,
+  ``Generalized Wigner-Inonu Contractions and Maxwell (Super)Algebras,''
+  Proc.\ Steklov Inst.\ Math.\  {\bf 272} (2011) 1
+  [arXiv:1007.3405 [hep-th]].
+  %%CITATION = PSMMB,272,1;%%
+
+  %\cite{Durka:2011nf}
+\bibitem{Durka:2011nf}
+  R.~Durka, J.~Kowalski-Glikman, M.~Szczachor,
+  ``Gauged AdS-Maxwell algebra and gravity,''
+[arXiv:1107.4728 [hep-th]].
+
+
+
+  %\cite{Hsu:1980zt}
+\bibitem{Hsu:1980zt}
+  J.~P.~Hsu, M.~D.~Xin,
+  ``Incompatibility Of Unitarity And Gauge Symmetry In The Sl(2,c) Yang-mills Field Theory,''
+  Phys.\ Rev.\  {\bf D24 } (1981)  471.
+
+  %\cite{Isham:1971gm}
+\bibitem{Isham:1971gm}
+  C.~J.~Isham, A.~Salam, J.~A.~Strathdee,
+  ``F-dominance of gravity,''
+  Phys.\ Rev.\  {\bf D3 } (1971)  867-873.
+
+  %\cite{Banados:2008fi}
+\bibitem{Banados:2008fi}
+  M.~Banados, A.~Gomberoff, D.~C.~Rodrigues, C.~Skordis,
+  ``A Note on bigravity and dark matter,''
+  Phys.\ Rev.\  {\bf D79 } (2009)  063515.
+  [arXiv:0811.1270 [gr-qc]].
+
+  %\cite{Damour:2002wu}
+\bibitem{Damour:2002wu}
+  T.~Damour, I.~I.~Kogan, A.~Papazoglou,
+  ``Nonlinear bigravity and cosmic acceleration,''
+  Phys.\ Rev.\  {\bf D66 } (2002)  104025.
+  [hep-th/0206044].
+
+  %\cite{Damour:2002ws}
+\bibitem{Damour:2002ws}
+  T.~Damour, I.~I.~Kogan,
+ ``Effective Lagrangians and universality classes of nonlinear bigravity,''
+  Phys.\ Rev.\  {\bf D66 } (2002)  104024.
+  [hep-th/0206042].
+
+
+%\cite{ArkaniHamed:2002sp}
+\bibitem{ArkaniHamed:2002sp}
+  N.~Arkani-Hamed, H.~Georgi, M.~D.~Schwartz,
+  ``Effective field theory for massive gravitons and gravity in theory space,''
+  Annals Phys.\  {\bf 305 } (2003)  96-118.
+  [hep-th/0210184].
+
+  %\cite{Blas:2005yk}
+\bibitem{Blas:2005yk}
+  D.~Blas, C.~Deffayet, J.~Garriga,
+ ``Global structure of bigravity solutions,''
+  Class.\ Quant.\ Grav.\  {\bf 23 } (2006)  1697-1719.
+  [hep-th/0508163].
+
+%\cite{Speziale:2010cf}
+\bibitem{Speziale:2010cf}
+  S.~Speziale,
+  ``Bi-metric theory of gravity from the non-chiral Plebanski action,''
+  Phys.\ Rev.\  {\bf D82 } (2010)  064003.
+  [arXiv:1003.4701 [hep-th]].
+
+%\cite{Clifton:2011jh}
+\bibitem{Clifton:2011jh}
+  T.~Clifton, P.~G.~Ferreira, A.~Padilla, C.~Skordis,
+ ``Modified Gravity and Cosmology,''
+
+  [arXiv:1106.2476 [astro-ph.CO]].
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%\cite{Forgacs:1979zs}
+\bibitem{Forgacs:1979zs}
+  P.~Forgacs, N.~S.~Manton,
+  ``Space-Time Symmetries in Gauge Theories,''
+  Commun.\ Math.\ Phys.\  {\bf 72 } (1980)  15.
+
+%\cite{Jackiw:1979ub}
+\bibitem{Jackiw:1979ub}
+  R.~Jackiw, N.~S.~Manton,
+  ``Symmetries And Conservation Laws In Gauge Theories,''
+  Annals Phys.\  {\bf 127 } (1980)  257.
+
+\end{thebibliography}
+
+
+\end{document}
