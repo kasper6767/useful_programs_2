@@ -1,0 +1,346 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[polish]{babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\geometry{margin=2.5cm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+\numberwithin{equation}{section}
+\setlist[enumerate]{itemsep=0.25em,topsep=0.3em}
+\setlist[itemize]{itemsep=0.2em,topsep=0.3em}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\dd}{\,\mathrm{d}}
+\newcommand{\zadanie}[1]{\subsection*{Zadanie #1}}
+\newcommand{\tresc}{\paragraph{Treść zadania.}}
+\newcommand{\teoria}{\paragraph{Potrzebna teoria.}}
+\newcommand{\rozw}{\paragraph{Rozwiązanie.}}
+
+\title{Analiza matematyczna i astronomia\\Lista 4 -- rozwiązania}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Zadania z listy L4}
+
+\zadanie{1}
+\tresc
+Wykazać, że dla każdego \(c\in\R_+\) szereg o wyrazie ogólnym
+\[
+  a_n=\frac{c^n}{n!},\qquad n\geq 1,
+\]
+jest zbieżny. Wywnioskować, że \(\frac{c^n}{n!}\to 0\).
+
+\teoria
+Kryterium d'Alemberta: jeżeli \(a_n>0\) i
+\[
+  \lim_{n\to\infty}\frac{a_{n+1}}{a_n}=L<1,
+\]
+to szereg \(\sum_{n=1}^{\infty}a_n\) jest zbieżny. Dla każdego
+szeregu zbieżnego jego wyrazy dążą do zera.
+
+\rozw
+Dla \(c>0\) obliczamy iloraz kolejnych wyrazów:
+\[
+  \frac{a_{n+1}}{a_n}
+  =\frac{c^{n+1}}{(n+1)!}\frac{n!}{c^n}
+  =\frac{c}{n+1}
+  \xrightarrow[n\to\infty]{}0.
+\]
+Granica jest mniejsza od \(1\), więc z kryterium d'Alemberta szereg
+jest zbieżny. Gdy \(c=0\), wszystkie wyrazy dla \(n\geq1\) są równe
+zeru, a wniosek pozostaje prawdziwy. Z koniecznego warunku zbieżności
+szeregu otrzymujemy
+\[
+  \boxed{\lim_{n\to\infty}\frac{c^n}{n!}=0.}
+\]
+
+\zadanie{2}
+\tresc
+Niech \(k\in\N\) i \(c>1\). Wykazać, że szereg o wyrazie ogólnym
+\[
+  a_n=\frac{n^k}{c^n},\qquad n\geq1,
+\]
+jest zbieżny. Wywnioskować, że \(\frac{n^k}{c^n}\to0\).
+
+\teoria
+Zastosujemy kryterium d'Alemberta: wystarczy, by granica ilorazu
+\(a_{n+1}/a_n\) była mniejsza od \(1\). Wyrazy zbieżnego szeregu
+muszą dążyć do zera.
+
+\rozw
+Dla \(n\geq1\) mamy
+\[
+  \frac{a_{n+1}}{a_n}
+  =\frac{(n+1)^k}{c^{n+1}}\frac{c^n}{n^k}
+  =\frac{1}{c}\left(1+\frac{1}{n}\right)^k
+  \xrightarrow[n\to\infty]{}\frac{1}{c}<1.
+\]
+Zatem \(\sum_{n=1}^{\infty} n^k/c^n\) jest zbieżny, a w szczególności
+\[
+  \boxed{\lim_{n\to\infty}\frac{n^k}{c^n}=0.}
+\]
+
+\zadanie{3}
+\tresc
+Wykazać, że szereg
+\[
+  \sum_{n=1}^{\infty}\frac{1}{4n^2-1}
+\]
+jest zbieżny i obliczyć jego sumę.
+
+\teoria
+Rozkład na ułamki proste może ujawnić teleskopową strukturę szeregu.
+Wtedy sumę oblicza się najpierw dla sum częściowych, a następnie
+przechodzi z \(N\) do nieskończoności.
+
+\rozw
+Rozkładamy mianownik:
+\[
+  4n^2-1=(2n-1)(2n+1),
+  \qquad
+  \frac{1}{4n^2-1}
+  =\frac12\left(\frac{1}{2n-1}-\frac{1}{2n+1}\right).
+\]
+Suma częściowa jest więc teleskopowa:
+\begin{align*}
+  S_N
+  &=\sum_{n=1}^{N}\frac{1}{4n^2-1}\\
+  &=\frac12\left[
+      \left(1-\frac13\right)
+      +\left(\frac13-\frac15\right)
+      +\cdots
+      +\left(\frac{1}{2N-1}-\frac{1}{2N+1}\right)
+    \right]\\
+  &=\frac12\left(1-\frac{1}{2N+1}\right).
+\end{align*}
+Stąd
+\[
+  \boxed{\sum_{n=1}^{\infty}\frac{1}{4n^2-1}
+    =\lim_{N\to\infty}S_N=\frac12.}
+\]
+Szereg jest zbieżny, ponieważ jego sumy częściowe mają skończoną
+granicę.
+
+\zadanie{4}
+\tresc
+Dla \(c>0\) zbadać zbieżność szeregu
+\[
+  \sum_{n=1}^{\infty}a_n,
+  \qquad
+  a_n=\frac{c^n n!}{n^n}.
+\]
+Rozpatrzyć osobno przypadki \(c<e\), \(c=e\) oraz \(c>e\).
+
+\teoria
+Kryterium d'Alemberta rozstrzyga przypadki, w których granica
+\(a_{n+1}/a_n\) jest różna od \(1\). W przypadku granicy równej \(1\)
+potrzebne jest dodatkowe oszacowanie; użyjemy wzoru Stirlinga
+\[
+  n!\sim \sqrt{2\pi n}\left(\frac{n}{e}\right)^n.
+\]
+
+\rozw
+Wszystkie wyrazy są dodatnie. Iloraz kolejnych wyrazów wynosi
+\[
+  \frac{a_{n+1}}{a_n}
+  =\frac{c^{n+1}(n+1)!}{(n+1)^{n+1}}
+    \frac{n^n}{c^n n!}
+  =c\left(\frac{n}{n+1}\right)^n
+  \xrightarrow[n\to\infty]{}\frac{c}{e},
+\]
+bo \(\left(1+\frac1n\right)^n\to e\).
+\begin{itemize}
+  \item Jeśli \(0<c<e\), to \(c/e<1\). Kryterium d'Alemberta daje
+    zbieżność szeregu.
+  \item Jeśli \(c>e\), to \(c/e>1\). Istnieje \(q>1\), dla którego
+    od pewnego miejsca \(a_{n+1}/a_n>q\). Wyrazy nie dążą do zera
+    (w istocie rosną co najmniej geometrycznie), więc szereg jest
+    rozbieżny.
+  \item Jeśli \(c=e\), to kryterium d'Alemberta nie rozstrzyga.
+    Ze wzoru Stirlinga:
+    \[
+      a_n=\frac{e^n n!}{n^n}
+      \sim \sqrt{2\pi n}.
+    \]
+    W szczególności \(a_n\not\to0\), zatem szereg jest rozbieżny.
+\end{itemize}
+Ostatecznie
+\[
+  \boxed{\text{szereg jest zbieżny wtedy i tylko wtedy, gdy }0<c<e.}
+\]
+
+\zadanie{5}
+\tresc
+Zbadać zbieżność szeregów o podanych wyrazach ogólnych:
+\[
+  \text{a)}\quad a_n=\ln\left(1+\frac1n\right),\qquad
+  \text{b)}\quad a_n=\frac{(\arctan n)^n}{2^n},\qquad
+  \text{c)}\quad a_n=\sqrt{n^2+1}-n.
+\]
+
+\teoria
+\begin{itemize}
+  \item Szereg teleskopowy rozpoznajemy, zapisując wyraz jako różnicę
+    kolejnych wyrazów pewnego ciągu.
+  \item Kryterium Cauchy'ego (pierwiastkowe) mówi, że jeśli
+    \(\limsup\sqrt[n]{|a_n|}<1\), to szereg \(\sum a_n\) jest
+    zbieżny bezwzględnie.
+  \item Zasada porównawcza: szereg o wyrazach nieujemnych jest
+    rozbieżny, jeśli jego wyrazy są od pewnego miejsca nie mniejsze
+    od wyrazów rozbieżnego szeregu.
+\end{itemize}
+
+\rozw
+\textbf{a) Szereg \(\displaystyle\sum_{n=1}^{\infty}
+\ln\left(1+\frac1n\right)\).}
+Ponieważ
+\[
+  \ln\left(1+\frac1n\right)
+  =\ln\left(\frac{n+1}{n}\right)=\ln(n+1)-\ln n,
+\]
+sumy częściowe teleskopują:
+\[
+  \sum_{n=1}^{N}\ln\left(1+\frac1n\right)
+  =\ln(N+1)\xrightarrow[N\to\infty]{}+\infty.
+\]
+Zatem szereg jest \(\boxed{\text{rozbieżny}}\).
+
+\medskip
+\textbf{b) Szereg \(\displaystyle\sum_{n=1}^{\infty}
+\frac{(\arctan n)^n}{2^n}\).}
+Wyrazy są dodatnie. Stosujemy kryterium pierwiastkowe:
+\[
+  \sqrt[n]{a_n}=\frac{\arctan n}{2}
+  \xrightarrow[n\to\infty]{}\frac{\pi}{4}<1.
+\]
+Szereg jest więc \(\boxed{\text{zbieżny bezwzględnie}}\).
+
+\medskip
+\textbf{c) Szereg \(\displaystyle\sum_{n=1}^{\infty}
+\left(\sqrt{n^2+1}-n\right)\).}
+Usuwamy niewymierność z licznika:
+\[
+  \sqrt{n^2+1}-n
+  =\frac{(\sqrt{n^2+1}-n)(\sqrt{n^2+1}+n)}
+          {\sqrt{n^2+1}+n}
+  =\frac{1}{\sqrt{n^2+1}+n}.
+\]
+Dla \(n\geq1\), \(\sqrt{n^2+1}\leq\sqrt{2}\,n\), zatem
+\[
+  \sqrt{n^2+1}-n
+  \geq \frac{1}{(1+\sqrt{2})n}
+  >\frac{1}{3n}.
+\]
+Szereg harmoniczny \(\sum 1/n\) jest rozbieżny, więc z kryterium
+porównawczego rozbieżny jest również rozważany szereg:
+\(\boxed{\text{szereg jest rozbieżny}}\).
+
+\zadanie{6}
+\tresc
+Zbadać zbieżność szeregu naprzemiennego o wyrazach
+\[
+  a_n=(-1)^{n-1}\left(\sqrt[n]{3}-1\right),
+  \qquad n\geq1.
+\]
+Czy szereg jest zbieżny bezwzględnie? Wskazówka: porównać
+\(\sqrt[n]{3}-1\) z wyrazami szeregu harmonicznego.
+
+\teoria
+Kryterium Leibniza: szereg naprzemienny
+\(\sum(-1)^{n-1}b_n\) jest zbieżny, jeśli \(b_n\geq0\), \(b_n\to0\)
+i ciąg \(b_n\) jest nierosnący. Zbieżność bezwzględną
+sprawdzamy przez szereg \(\sum |a_n|\).
+
+\rozw
+Oznaczmy
+\[
+  b_n=\sqrt[n]{3}-1
+      =\exp\left(\frac{\ln 3}{n}\right)-1.
+\]
+Mamy \(b_n>0\), a funkcja
+\[
+  b(x)=\exp\left(\frac{\ln 3}{x}\right)-1,\qquad x>0,
+\]
+jest malejąca, ponieważ
+\[
+  b'(x)=-\frac{\ln 3}{x^2}
+         \exp\left(\frac{\ln 3}{x}\right)<0.
+\]
+Ponadto \(b_n\to0\). Kryterium Leibniza daje zbieżność szeregu
+\(\sum a_n\).
+
+Sprawdzamy zbieżność bezwzględną. Dla \(x>0\) zachodzi
+\(e^x-1>x\), więc
+\[
+  |a_n|=b_n
+  =e^{(\ln3)/n}-1
+  >\frac{\ln3}{n}
+  >\frac1n,
+\]
+bo \(\ln3>1\). Z porównania z szeregiem harmonicznym wynika, że
+\(\sum |a_n|\) jest rozbieżny. Zatem
+\[
+  \boxed{\text{szereg jest zbieżny warunkowo, ale nie bezwzględnie}.}
+\]
+
+\zadanie{7}
+\tresc
+Piłkę upuszczono z wysokości \(h=1\,\mathrm{m}\). Po jakim czasie
+znajdzie się w spoczynku, jeżeli przy każdym zderzeniu z ziemią traci
+połowę energii kinetycznej? Pominąć opór powietrza i rozmiary piłki.
+
+\teoria
+W polu grawitacyjnym energia kinetyczna przy uderzeniu wynosi
+\(E_k=\frac12mv^2\). Jeśli po zderzeniu pozostaje połowa energii, to
+prędkość po odbiciu jest pomnożona przez \(q=1/\sqrt2\), ponieważ
+energia jest proporcjonalna do \(v^2\). Czas swobodnego spadania
+z wysokości \(h\) wynosi \(\sqrt{2h/g}\). Kolejne czasy lotu tworzą
+szereg geometryczny.
+
+\rozw
+Czas pierwszego spadania oznaczmy przez
+\[
+  t_0=\sqrt{\frac{2h}{g}}.
+\]
+Prędkość tuż przed pierwszym zderzeniem to \(v_0=\sqrt{2gh}\).
+Po każdym odbiciu energia, a więc także wysokość maksymalna,
+zmniejsza się dwukrotnie. Prędkość po \(n\)-tym odbiciu wynosi
+\[
+  v_n=\frac{v_0}{(\sqrt2)^n}.
+\]
+Czas wznoszenia po \(n\)-tym odbiciu jest równy \(v_n/g\), a całkowity
+czas kolejnego lotu (wznoszenie i spadanie) to
+\[
+  \Delta t_n=\frac{2v_n}{g}
+  =2t_0\left(\frac1{\sqrt2}\right)^n,\qquad n\geq1.
+\]
+Łączny czas wszystkich lotów jest zatem
+\begin{align*}
+  T
+  &=t_0+\sum_{n=1}^{\infty}\Delta t_n\\
+  &=t_0\left(1+2\sum_{n=1}^{\infty}
+                  \left(\frac1{\sqrt2}\right)^n\right)\\
+  &=t_0\left(1+\frac{2/\sqrt2}{1-1/\sqrt2}\right)
+    =t_0(3+2\sqrt2).
+\end{align*}
+Dla \(h=1\,\mathrm{m}\) i \(g\approx9.81\,\mathrm{m/s^2}\):
+\[
+  \boxed{T=(3+2\sqrt2)\sqrt{\frac{2}{9.81}}\,\mathrm{s}
+         \approx 2.63\,\mathrm{s}.}
+\]
+Piłka osiąga spoczynek dokładnie dopiero w granicy nieskończonej
+liczby odbić; \(T\) jest skończonym czasem granicznym tego procesu.
+
+\end{document}
