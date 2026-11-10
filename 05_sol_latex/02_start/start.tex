@@ -1,0 +1,141 @@
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[polish]{babel}
+\usepackage[normalem]{ulem}
+\usepackage{enumitem,amssymb}
+\newlist{todolist}{itemize}{2}
+\setlist[todolist]{label=$\square$}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{parskip}
+\usepackage{graphicx} % Required for inserting images
+
+\title{Tytuł}
+
+\lstset{
+    language=Python,      
+    basicstyle=\ttfamily\small,
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    keywordstyle=\color{blue},
+    commentstyle=\color{green!50!black},
+    stringstyle=\color{red},
+    frame=single,
+    breaklines=true,
+    tabsize=4
+}
+
+\begin{document}
+\author{Autor}
+\maketitle
+
+\section{Główna sekcja}
+To jest główna sekcja. Tutaj będzie znajdował się tekst wprowadzenia.
+
+\subsection{Podsekcja Pierwsza}
+To jest pierwsza podsekcja. Tutaj będzie znajdował się opis celu.
+
+\subsection{Podsekcja Druga}
+To jest druga podsekcja. Tutaj będzie znajdował się opis metody.
+
+\section{Formatowanie tekstu}
+
+\subsection{Tekst pogrubiony}
+\textbf{Ten tekst jest pogrubiony}
+
+\subsection{Tekst pochylony}
+\textit{Ten tekst jest pochylony}
+
+\subsection{Tekst przekreślony}
+\sout{Ten tekst jest przekreślony}
+
+\subsection{Tekst ważny}
+\emph{Ten tekst jest ważny}
+
+\section{Listy}
+
+\subsection{Lista punktowana}
+\begin{itemize}
+    \item Item 1
+    \item Item 2
+    \item Item 3
+\end{itemize}
+
+\subsection{Lista numerowana}
+\begin{enumerate}
+    \item Item 1
+    \item Item 2
+    \item Item 3
+\end{enumerate}
+
+\subsection{Checklista}
+\begin{todolist}
+    \item Item 1
+    \item Item 2
+    \item Item 3
+\end{todolist}
+
+\subsection{Tabelka}
+\begin{table}[h]
+    \centering
+
+    \begin{tabular}{c|c}
+       \hline
+       Item 1 & Item 2 \\
+       \hline
+       Item 3 & Item 4 \\
+       \hline
+    \end{tabular}
+
+    \caption{Przykładowe dane.}
+    \label{tab:data}
+\end{table}
+
+\section{Google Colab}
+
+\subsection{Link do strony Google Colab}
+\url{http://colab.research.google.com}
+
+\section{Python}
+
+\subsection{Fragment Kodu}
+\begin{lstlisting}
+    print("Hello World!")
+\end{lstlisting}
+
+\section{Matematyka}
+
+\subsection{Wzory matematyczne w tekście}
+Energia dana jest wzorem $E=mc^2$. \\
+Wzór gazu doskonałego Clapeyrona to $pV=nRT$. \\
+Drugie prawo Newtona to $F=ma$. \\
+
+\subsection{Osobne wzory matematyczne}
+Energia fotonu jest dana wzorem
+$$
+E_{f} = \frac{hc}{\lambda}
+$$
+Siła grawitacyjna jest dana wzorem
+$$
+F_{g} = \frac{Gm_{1}m_{2}}{r^2}
+$$
+Siła dośrodkowa jest dana wzorem
+$$
+F_{do} = \frac{mv^2}{r}
+$$
+
+\section{Grafika}
+\subsection{Osadzony obrazek}
+\begin{figure}[h]
+   \centering
+
+   \includegraphics[width = 0.7\textwidth]{wykres.png}
+
+   \caption{Wykres rzutu ukośnego}
+   \label{fig:fit}
+\end{figure}
+
+
+\end{document}
