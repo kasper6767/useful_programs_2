@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#10252c">
+	<title>Rzut ukośny | Pracownia ruchu</title>
+	<style>
+		:root {
+			color-scheme: light;
+			--ink: #172d31;
+			--muted: #667779;
+			--paper: #f2f1e9;
+			--white: #fffefa;
+			--line: #dedfd5;
+			--teal: #087c78;
+			--night: #10252c;
+			--night-soft: #1a363d;
+			--coral: #ff775e;
+			--lime: #d3ef73;
+			--sky: #69d6e3;
+			--gold: #ffc765;
+			--serif: Georgia, "Times New Roman", serif;
+			--sans: "Trebuchet MS", Verdana, sans-serif;
+		}
+
+		* {
+			box-sizing: border-box;
+		}
+
+		html {
+			min-width: 320px;
+			background: var(--paper);
+		}
+
+		body {
+			margin: 0;
+			color: var(--ink);
+			font-family: var(--sans);
+			font-size: 15px;
+			line-height: 1.5;
+		}
+
+		button,
+		input {
+			font: inherit;
+		}
+
+		button:focus-visible,
+		input:focus-visible,
+		a:focus-visible {
+			outline: 3px solid var(--coral);
+			outline-offset: 3px;
+		}
+
+		.page-shell {
+			width: min(1440px, 100% - 64px);
+			margin: 0 auto;
+		}
+
+		.masthead {
+			min-height: 92px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 24px;
+			border-bottom: 1px solid var(--line);
+		}
+
+		.wordmark {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			color: var(--ink);
+			font-size: 0.84rem;
+			font-weight: 800;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+		}
+
+		.wordmark-mark {
+			width: 36px;
+			aspect-ratio: 1;
+			display: grid;
+			place-items: center;
+			border-radius: 50%;
+			background: var(--coral);
+			color: var(--night);
+			font-family: var(--serif);
+			font-size: 1.2rem;
+		}
+
+		.header-note {
+			color: var(--muted);
+			font-size: 0.8rem;
+			text-align: right;
+		}
+
+		.intro {
+			padding: 40px 0 32px;
+			display: flex;
+			align-items: end;
+			justify-content: space-between;
+			gap: 32px;
+			animation: rise-in 650ms both;
+		}
+
+		.eyebrow {
+			margin: 0 0 8px;
+			color: var(--teal);
+			font-size: 0.72rem;
+			font-weight: 800;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+		}
+
+		h1,
+		h2,
+		p {
+			margin-top: 0;
+		}
+
+		h1 {
+			margin-bottom: 0;
+			font-family: var(--serif);
+			font-size: 3.75rem;
+			font-weight: 500;
+			line-height: 1;
+		}
+
+		h1 span {
+			color: var(--teal);
+			font-style: italic;
+		}
+
+		.intro-copy {
+			max-width: 390px;
+			margin: 0 0 3px;
+			color: var(--muted);
+			font-size: 0.95rem;
+		}
+
+		.lab {
+			min-height: 610px;
+			display: grid;
+			grid-template-columns: minmax(270px, 330px) minmax(0, 1fr);
+			border: 1px solid #d5d9d0;
+			border-radius: 8px;
+			background: var(--white);
+			box-shadow: 0 18px 48px rgb(23 45 49 / 9%);
+			overflow: hidden;
+			animation: rise-in 750ms 100ms both;
+		}
+
+		.controls {
+			padding: 26px 24px 22px;
+			border-right: 1px solid var(--line);
+		}
+
+		.panel-heading {
+			margin: 0 0 5px;
+			font-size: 0.78rem;
+			font-weight: 800;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+		}
+
+		.parameter {
+			margin-bottom: 19px;
+		}
+
+		.parameter-header {
+			margin-bottom: 8px;
+			display: flex;
+			align-items: baseline;
+			justify-content: space-between;
+			gap: 12px;
+		}
+
+		.parameter label {
+			font-size: 0.86rem;
+			font-weight: 700;
+		}
+
+		.parameter output {
+			min-width: 72px;
+			color: var(--teal);
+			font-size: 0.86rem;
+			font-variant-numeric: tabular-nums;
+			font-weight: 800;
+			text-align: right;
+		}
+
+		input[type="range"] {
+			width: 100%;
+			height: 22px;
+			margin: 0;
+			appearance: none;
+			background: transparent;
+			cursor: pointer;
+		}
+
+		input[type="range"]::-webkit-slider-runnable-track {
+			height: 5px;
+			border-radius: 99px;
+			background: linear-gradient(90deg, var(--teal), #b8d5c7);
+		}
+
+		input[type="range"]::-moz-range-track {
+			height: 5px;
+			border-radius: 99px;
+			background: linear-gradient(90deg, var(--teal), #b8d5c7);
+		}
+
+		input[type="range"]::-webkit-slider-thumb {
+			width: 18px;
+			height: 18px;
+			margin-top: -6.5px;
+			appearance: none;
+			border: 3px solid var(--white);
+			border-radius: 50%;
+			background: var(--teal);
+			box-shadow: 0 0 0 1.5px var(--teal), 0 2px 6px rgb(23 45 49 / 22%);
+			transition: transform 150ms ease;
+		}
+
+		input[type="range"]::-moz-range-thumb {
+			width: 13px;
+			height: 13px;
+			border: 3px solid var(--white);
+			border-radius: 50%;
+			background: var(--teal);
+			box-shadow: 0 0 0 1.5px var(--teal), 0 2px 6px rgb(23 45 49 / 22%);
+			transition: transform 150ms ease;
+		}
+
+		input[type="range"]:active::-webkit-slider-thumb {
+			transform: scale(1.15);
+		}
+
+		input[type="range"]:active::-moz-range-thumb {
+			transform: scale(1.15);
+		}
+
+		.range-ends {
+			margin-top: 1px;
+			display: flex;
+			justify-content: space-between;
+			color: #899493;
+			font-size: 0.68rem;
+			font-variant-numeric: tabular-nums;
+		}
+
+		.control-divider {
+			margin: 22px 0 18px;
+			border: 0;
+			border-top: 1px solid var(--line);
+		}
+
+		.transport {
+			display: grid;
+			grid-template-columns: 1fr 48px;
+			gap: 8px;
+		}
+
+		.button {
+			min-height: 44px;
+			padding: 0 13px;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			gap: 8px;
+			border: 1px solid transparent;
+			border-radius: 5px;
+			cursor: pointer;
+			font-size: 0.84rem;
+			font-weight: 800;
+			transition: background 160ms ease, color 160ms ease, transform 160ms ease;
+		}
+
+		.button:active {
+			transform: translateY(1px);
+		}
+
+		.button-primary {
+			background: var(--teal);
+			color: var(--white);
+		}
+
+		.button-primary:hover {
+			background: #056761;
+		}
+
+		.button-secondary {
+			border-color: var(--line);
+			background: var(--white);
+			color: var(--ink);
+		}
+
+		.button-secondary:hover {
+			background: #edf3ee;
+		}
+
+		.button-icon {
+			font-size: 1rem;
+			line-height: 1;
+		}
+
+		.speed-label {
+			margin: 17px 0 8px;
+			color: var(--muted);
+			font-size: 0.72rem;
+			font-weight: 800;
+			letter-spacing: 0.07em;
+			text-transform: uppercase;
+		}
+
+		.speed-options {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 6px;
+		}
+
+		.speed-button {
+			min-height: 34px;
+			padding: 0 6px;
+			border: 1px solid var(--line);
+			border-radius: 4px;
+			background: transparent;
+			color: var(--muted);
+			cursor: pointer;
+			font-size: 0.75rem;
+			font-variant-numeric: tabular-nums;
+			transition: background 150ms ease, color 150ms ease, border-color 150ms ease;
+		}
+
+		.speed-button:hover {
+			border-color: var(--teal);
+			color: var(--teal);
+		}
+
+		.speed-button[aria-pressed="true"] {
+			border-color: var(--teal);
+			background: #e4f1eb;
+			color: var(--teal);
+			font-weight: 800;
+		}
+
+		.vector-key {
+			margin-top: 20px;
+			padding-top: 15px;
+			border-top: 1px solid var(--line);
+		}
+
+		.vector-key h3 {
+			margin: 0 0 10px;
+			font-size: 0.72rem;
+			letter-spacing: 0.07em;
+			text-transform: uppercase;
+		}
+
+		.key-row {
+			margin: 6px 0;
+			display: flex;
+			align-items: center;
+			gap: 9px;
+			color: var(--muted);
+			font-size: 0.78rem;
+		}
+
+		.key-line {
+			width: 24px;
+			height: 3px;
+			border-radius: 3px;
+			background: var(--sky);
+		}
+
+		.key-line.acceleration {
+			background: var(--coral);
+		}
+
+		.simulation {
+			min-width: 0;
+			padding: 22px;
+			display: flex;
+			flex-direction: column;
+			background: var(--night);
+			color: var(--white);
+		}
+
+		.simulation-head {
+			min-height: 34px;
+			margin-bottom: 10px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 12px;
+		}
+
+		.simulation-title {
+			margin: 0;
+			color: #dce7dc;
+			font-size: 0.73rem;
+			font-weight: 800;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+		}
+
+		.status {
+			display: inline-flex;
+			align-items: center;
+			gap: 7px;
+			color: var(--lime);
+			font-size: 0.68rem;
+			font-weight: 800;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+		}
+
+		.status-dot {
+			width: 7px;
+			aspect-ratio: 1;
+			border-radius: 50%;
+			background: currentColor;
+		}
+
+		.status.is-playing .status-dot {
+			animation: blink 1.1s ease-in-out infinite;
+		}
+
+		.canvas-wrap {
+			position: relative;
+			min-height: 370px;
+			flex: 1;
+			border: 1px solid #29444a;
+			border-radius: 5px;
+			background-color: #132d35;
+			background-image: linear-gradient(rgb(166 211 192 / 4%) 1px, transparent 1px), linear-gradient(90deg, rgb(166 211 192 / 4%) 1px, transparent 1px);
+			background-size: 32px 32px;
+			overflow: hidden;
+		}
+
+		canvas {
+			width: 100%;
+			height: 100%;
+			min-height: 370px;
+			display: block;
+		}
+
+		.simulation-foot {
+			margin-top: 10px;
+			display: flex;
+			justify-content: space-between;
+			gap: 12px;
+			color: #b6c8c0;
+			font-size: 0.72rem;
+		}
+
+		.live-readout {
+			margin-top: 14px;
+			display: grid;
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+			border: 1px solid #29444a;
+			border-radius: 5px;
+			background: var(--night-soft);
+		}
+
+		.readout-item {
+			min-width: 0;
+			padding: 11px 12px;
+			border-right: 1px solid #355057;
+		}
+
+		.readout-item:last-child {
+			border-right: 0;
+		}
+
+		.readout-label {
+			display: block;
+			color: #adc0ba;
+			font-size: 0.66rem;
+			font-weight: 700;
+			letter-spacing: 0.06em;
+			text-transform: uppercase;
+		}
+
+		.readout-value {
+			display: block;
+			margin-top: 2px;
+			color: var(--white);
+			font-size: 1rem;
+			font-variant-numeric: tabular-nums;
+			font-weight: 800;
+			white-space: nowrap;
+		}
+
+		.readout-value small {
+			color: #c1d0ca;
+			font-size: 0.68rem;
+			font-weight: 500;
+		}
+
+		.results {
+			margin: 18px 0 48px;
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			border-bottom: 1px solid var(--line);
+			animation: rise-in 850ms 180ms both;
+		}
+
+		.result {
+			padding: 19px 22px 20px 0;
+		}
+
+		.result + .result {
+			padding-left: 22px;
+			border-left: 1px solid var(--line);
+		}
+
+		.result-label {
+			display: block;
+			color: var(--muted);
+			font-size: 0.74rem;
+		}
+
+		.result-value {
+			display: block;
+			margin-top: 2px;
+			font-family: var(--serif);
+			font-size: 1.65rem;
+			font-variant-numeric: tabular-nums;
+		}
+
+		.result-value small {
+			font-family: var(--sans);
+			font-size: 0.78rem;
+		}
+
+		.page-footer {
+			padding: 0 0 25px;
+			color: var(--muted);
+			font-size: 0.75rem;
+		}
+
+		.page-footer p {
+			margin: 0;
+		}
+
+		@keyframes rise-in {
+			from { opacity: 0; transform: translateY(12px); }
+			to { opacity: 1; transform: translateY(0); }
+		}
+
+		@keyframes blink {
+			50% { opacity: 0.35; }
+		}
+
+		@media (max-width: 980px) {
+			.page-shell {
+				width: min(100% - 40px, 760px);
+			}
+
+			.lab {
+				grid-template-columns: 280px minmax(0, 1fr);
+			}
+
+			.controls {
+				padding: 22px 18px;
+			}
+
+			.simulation {
+				padding: 16px;
+			}
+
+			.live-readout {
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+			}
+
+			.readout-item:nth-child(2) {
+				border-right: 0;
+			}
+
+			.readout-item:nth-child(-n + 2) {
+				border-bottom: 1px solid #355057;
+			}
+		}
+
+		@media (max-width: 700px) {
+			.page-shell {
+				width: min(100% - 28px, 540px);
+			}
+
+			.masthead {
+				min-height: 74px;
+			}
+
+			.header-note {
+				max-width: 140px;
+			}
+
+			.intro {
+				padding: 32px 0 24px;
+				align-items: flex-start;
+				flex-direction: column;
+				gap: 14px;
+			}
+
+			.intro-copy {
+				max-width: 460px;
+			}
+
+			.lab {
+				grid-template-columns: minmax(0, 1fr);
+			}
+
+			.controls {
+				border-right: 0;
+				border-bottom: 1px solid var(--line);
+			}
+
+			.parameters-grid {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				column-gap: 22px;
+			}
+
+			.simulation {
+				min-height: 540px;
+			}
+
+			.canvas-wrap,
+			canvas {
+				min-height: 350px;
+			}
+
+			.results {
+				margin-bottom: 32px;
+			}
+		}
+
+		@media (max-width: 460px) {
+			.page-shell {
+				width: min(100% - 24px, 400px);
+			}
+
+			.wordmark {
+				font-size: 0.72rem;
+			}
+
+			.header-note {
+				font-size: 0.68rem;
+			}
+
+			h1 {
+				font-size: 2.5rem;
+			}
+
+			.parameters-grid {
+				grid-template-columns: 1fr;
+				column-gap: 0;
+			}
+
+			.parameter {
+				margin-bottom: 15px;
+			}
+
+			.simulation {
+				min-height: 500px;
+				padding: 12px;
+			}
+
+			.canvas-wrap,
+			canvas {
+				min-height: 320px;
+			}
+
+			.simulation-foot {
+				font-size: 0.65rem;
+			}
+
+			.readout-item {
+				padding: 9px;
+			}
+
+			.readout-value {
+				font-size: 0.9rem;
+			}
+
+			.results {
+				grid-template-columns: 1fr;
+			}
+
+			.result,
+			.result + .result {
+				padding: 13px 0;
+				border-left: 0;
+				border-bottom: 1px solid var(--line);
+			}
+
+			.result:last-child {
+				border-bottom: 0;
+			}
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+			*,
+			*::before,
+			*::after {
+				animation-duration: 0.01ms !important;
+				animation-iteration-count: 1 !important;
+				scroll-behavior: auto !important;
+				transition-duration: 0.01ms !important;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="page-shell">
+		<header class="masthead">
+			<div class="wordmark"><span class="wordmark-mark" aria-hidden="true">↗</span> Pracownia ruchu</div>
+			<div class="header-note">FIZYKA W RUCHU <span aria-hidden="true">/</span> 01</div>
+		</header>
+
+		<main>
+			<section class="intro" aria-labelledby="page-title">
+				<div>
+					<p class="eyebrow">Mechanika · symulator interaktywny</p>
+					<h1 id="page-title">Rzut <span>ukośny</span></h1>
+				</div>
+				<p class="intro-copy">Ustaw parametry i obserwuj, jak zmienia się tor lotu. Grawitacja zakrzywia trajektorię, ale nie odbiera pociskowi poziomej prędkości.</p>
+			</section>
+
+			<section class="lab" aria-label="Symulator rzutu ukośnego">
+				<aside class="controls" aria-labelledby="controls-title">
+					<h2 class="panel-heading" id="controls-title">Parametry początkowe</h2>
+
+					<div class="parameters-grid">
+						<div class="parameter">
+							<div class="parameter-header"><label for="speed">Prędkość początkowa</label><output id="speed-value" for="speed">24 m/s</output></div>
+							<input id="speed" type="range" min="8" max="36" step="1" value="24">
+							<div class="range-ends"><span>8 m/s</span><span>36 m/s</span></div>
+						</div>
+						<div class="parameter">
+							<div class="parameter-header"><label for="angle">Kąt wyrzutu</label><output id="angle-value" for="angle">48°</output></div>
+							<input id="angle" type="range" min="5" max="85" step="1" value="48">
+							<div class="range-ends"><span>5°</span><span>85°</span></div>
+						</div>
+						<div class="parameter">
+							<div class="parameter-header"><label for="height">Wysokość wyrzutu</label><output id="height-value" for="height">2 m</output></div>
+							<input id="height" type="range" min="0" max="24" step="1" value="2">
+							<div class="range-ends"><span>0 m</span><span>24 m</span></div>
+						</div>
+						<div class="parameter">
+							<div class="parameter-header"><label for="gravity">Grawitacja</label><output id="gravity-value" for="gravity">9,8 m/s²</output></div>
+							<input id="gravity" type="range" min="3" max="15" step="0.1" value="9.8">
+							<div class="range-ends"><span>3 m/s²</span><span>15 m/s²</span></div>
+						</div>
+					</div>
+
+					<hr class="control-divider">
+					<div class="transport" aria-label="Sterowanie animacją">
+						<button class="button button-primary" id="play-button" type="button" title="Wstrzymaj animację">
+							<span class="button-icon" id="play-icon" aria-hidden="true">Ⅱ</span><span id="play-text">Pauza</span>
+						</button>
+						<button class="button button-secondary" id="reset-button" type="button" aria-label="Zacznij od początku" title="Zacznij od początku"><span class="button-icon" aria-hidden="true">↺</span></button>
+					</div>
+					<p class="speed-label">Tempo animacji</p>
+					<div class="speed-options" role="group" aria-label="Tempo animacji">
+						<button class="speed-button" type="button" data-rate="0.5" aria-pressed="false">0,5×</button>
+						<button class="speed-button" type="button" data-rate="1" aria-pressed="true">1×</button>
+						<button class="speed-button" type="button" data-rate="2" aria-pressed="false">2×</button>
+					</div>
+
+					<div class="vector-key" aria-label="Legenda wektorów">
+						<h3>Wektory na wykresie</h3>
+						<div class="key-row"><span class="key-line" aria-hidden="true"></span> Prędkość v</div>
+						<div class="key-row"><span class="key-line acceleration" aria-hidden="true"></span> Przyspieszenie g</div>
+					</div>
+				</aside>
+
+				<div class="simulation">
+					<div class="simulation-head">
+						<h2 class="simulation-title">Tor lotu · x (m) / y (m)</h2>
+						<div class="status is-playing" id="status"><span class="status-dot" aria-hidden="true"></span><span id="status-text">W locie</span></div>
+					</div>
+					<div class="canvas-wrap">
+						<canvas id="trajectory" aria-label="Wykres animacji rzutu ukośnego z wektorami prędkości i przyspieszenia">
+							Symulacja rzutu ukośnego. Wymagana jest obsługa elementu canvas.
+						</canvas>
+					</div>
+					<div class="simulation-foot"><span>MODEL: OPÓR POWIETRZA POMINIĘTY</span><span id="clock">t = 0,00 s</span></div>
+					<div class="live-readout" aria-label="Bieżące parametry lotu">
+						<div class="readout-item"><span class="readout-label">Pozycja x</span><span class="readout-value" id="position-x">0,00 <small>m</small></span></div>
+						<div class="readout-item"><span class="readout-label">Pozycja y</span><span class="readout-value" id="position-y">0,00 <small>m</small></span></div>
+						<div class="readout-item"><span class="readout-label">Prędkość</span><span class="readout-value" id="current-speed">0,00 <small>m/s</small></span></div>
+						<div class="readout-item"><span class="readout-label">Czas</span><span class="readout-value" id="current-time">0,00 <small>s</small></span></div>
+					</div>
+				</div>
+			</section>
+
+			<section class="results" aria-label="Przewidywane wyniki lotu">
+				<div class="result"><span class="result-label">Zasięg poziomy</span><span class="result-value" id="range-result">0,0 <small>m</small></span></div>
+				<div class="result"><span class="result-label">Maksymalna wysokość</span><span class="result-value" id="apex-result">0,0 <small>m</small></span></div>
+				<div class="result"><span class="result-label">Czas lotu</span><span class="result-value" id="flight-result">0,00 <small>s</small></span></div>
+			</section>
+		</main>
+
+		<footer class="page-footer"><p>Ruch w dwóch wymiarach · model bez oporu powietrza · g oznacza przyspieszenie grawitacyjne</p></footer>
+	</div>
+
+	<script>
+		const canvas = document.getElementById("trajectory");
+		const context = canvas.getContext("2d");
+		const speedInput = document.getElementById("speed");
+		const angleInput = document.getElementById("angle");
+		const heightInput = document.getElementById("height");
+		const gravityInput = document.getElementById("gravity");
+		const playButton = document.getElementById("play-button");
+		const resetButton = document.getElementById("reset-button");
+		const status = document.getElementById("status");
+		const statusText = document.getElementById("status-text");
+		const speedButtons = [...document.querySelectorAll(".speed-button")];
+
+		let elapsed = 0;
+		let lastFrame = 0;
+		let playing = true;
+		let playbackRate = 1;
+		let pixelRatio = 1;
+
+		function formatNumber(value, digits = 2) {
+			return value.toFixed(digits).replace(".", ",");
+		}
+
+		function readParameters() {
+			return {
+				speed: Number(speedInput.value),
+				angle: Number(angleInput.value),
+				height: Number(heightInput.value),
+				gravity: Number(gravityInput.value)
+			};
+		}
+
+		function getFlightModel() {
+			const parameters = readParameters();
+			const radians = parameters.angle * Math.PI / 180;
+			const velocityX = parameters.speed * Math.cos(radians);
+			const velocityY = parameters.speed * Math.sin(radians);
+			const flightTime = (velocityY + Math.sqrt(velocityY ** 2 + 2 * parameters.gravity * parameters.height)) / parameters.gravity;
+			const range = velocityX * flightTime;
+			const maximumHeight = parameters.height + velocityY ** 2 / (2 * parameters.gravity);
+			return { ...parameters, radians, velocityX, velocityY, flightTime, range, maximumHeight };
+		}
+
+		function positionAt(time, model) {
+			const clampedTime = Math.max(0, Math.min(time, model.flightTime));
+			const x = model.velocityX * clampedTime;
+			const y = Math.max(0, model.height + model.velocityY * clampedTime - 0.5 * model.gravity * clampedTime ** 2);
+			const velocityY = model.velocityY - model.gravity * clampedTime;
+			return {
+				x,
+				y,
+				velocityX: model.velocityX,
+				velocityY,
+				speed: Math.hypot(model.velocityX, velocityY)
+			};
+		}
+
+		function niceStep(maximum) {
+			const roughStep = maximum / 5;
+			const power = 10 ** Math.floor(Math.log10(roughStep));
+			const fraction = roughStep / power;
+			const niceFraction = fraction <= 1 ? 1 : fraction <= 2 ? 2 : fraction <= 5 ? 5 : 10;
+			return niceFraction * power;
+		}
+
+		function drawArrow(x, y, deltaX, deltaY, color, label) {
+			const endX = x + deltaX;
+			const endY = y + deltaY;
+			const angle = Math.atan2(deltaY, deltaX);
+			const headLength = 9;
+
+			context.save();
+			context.strokeStyle = color;
+			context.fillStyle = color;
+			context.lineWidth = 2.6;
+			context.lineCap = "round";
+			context.shadowColor = color;
+			context.shadowBlur = 9;
+			context.beginPath();
+			context.moveTo(x, y);
+			context.lineTo(endX, endY);
+			context.stroke();
+			context.beginPath();
+			context.moveTo(endX, endY);
+			context.lineTo(endX - headLength * Math.cos(angle - Math.PI / 6), endY - headLength * Math.sin(angle - Math.PI / 6));
+			context.lineTo(endX - headLength * Math.cos(angle + Math.PI / 6), endY - headLength * Math.sin(angle + Math.PI / 6));
+			context.closePath();
+			context.fill();
+			context.shadowBlur = 0;
+			context.font = "700 12px Trebuchet MS, sans-serif";
+			context.fillText(label, endX + 8, endY - 7);
+			context.restore();
+		}
+
+		function drawScene(model, current) {
+			const bounds = canvas.getBoundingClientRect();
+			if (bounds.width === 0 || bounds.height === 0) return;
+
+			pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+			const pixelWidth = Math.round(bounds.width * pixelRatio);
+			const pixelHeight = Math.round(bounds.height * pixelRatio);
+			if (canvas.width !== pixelWidth || canvas.height !== pixelHeight) {
+				canvas.width = pixelWidth;
+				canvas.height = pixelHeight;
+			}
+			context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+
+			const width = bounds.width;
+			const height = bounds.height;
+			context.clearRect(0, 0, width, height);
+
+			const padding = { left: 58, right: 28, top: 38, bottom: 52 };
+			const plotWidth = Math.max(40, width - padding.left - padding.right);
+			const plotHeight = Math.max(40, height - padding.top - padding.bottom);
+			const maxX = Math.max(model.range * 1.14, 8);
+			const maxY = Math.max(model.maximumHeight * 1.2, 6);
+			const scale = Math.min(plotWidth / maxX, plotHeight / maxY);
+			const originX = padding.left;
+			const groundY = height - padding.bottom;
+			const plotRight = originX + maxX * scale;
+			const plotTop = groundY - maxY * scale;
+
+			context.save();
+			context.strokeStyle = "rgba(185, 218, 198, 0.12)";
+			context.fillStyle = "#a9c2b9";
+			context.lineWidth = 1;
+			context.font = "11px Trebuchet MS, sans-serif";
+			context.textAlign = "right";
+			context.textBaseline = "middle";
+			const yStep = niceStep(maxY);
+			for (let value = 0; value <= maxY + yStep * 0.1; value += yStep) {
+				const y = groundY - value * scale;
+				if (y < plotTop - 1) continue;
+				context.beginPath();
+				context.moveTo(originX, y);
+				context.lineTo(plotRight, y);
+				context.stroke();
+				context.fillText(String(Number(value.toPrecision(3))).replace(".", ","), originX - 10, y);
+			}
+
+			context.textAlign = "center";
+			context.textBaseline = "top";
+			const xStep = niceStep(maxX);
+			for (let value = 0; value <= maxX + xStep * 0.1; value += xStep) {
+				const x = originX + value * scale;
+				if (x > plotRight + 1) continue;
+				context.beginPath();
+				context.moveTo(x, plotTop);
+				context.lineTo(x, groundY);
+				context.stroke();
+				context.fillText(String(Number(value.toPrecision(3))).replace(".", ","), x, groundY + 10);
+			}
+
+			context.strokeStyle = "#92aaa0";
+			context.lineWidth = 1.5;
+			context.beginPath();
+			context.moveTo(originX, plotTop);
+			context.lineTo(originX, groundY);
+			context.lineTo(plotRight, groundY);
+			context.stroke();
+			context.textAlign = "left";
+			context.textBaseline = "bottom";
+			context.fillStyle = "#d2e0d7";
+			context.font = "700 11px Trebuchet MS, sans-serif";
+			context.fillText("y (m)", originX - 3, plotTop - 8);
+			context.textAlign = "right";
+			context.fillText("x (m)", plotRight, groundY + 29);
+			context.restore();
+
+			const toCanvas = (x, y) => ({ x: originX + x * scale, y: groundY - y * scale });
+			const pathPoint = (time) => {
+				const point = positionAt(time, model);
+				return toCanvas(point.x, point.y);
+			};
+
+			context.save();
+			context.setLineDash([5, 7]);
+			context.lineWidth = 2;
+			context.strokeStyle = "rgba(211, 239, 115, 0.35)";
+			context.beginPath();
+			for (let index = 0; index <= 100; index += 1) {
+				const point = pathPoint(model.flightTime * index / 100);
+				if (index === 0) context.moveTo(point.x, point.y);
+				else context.lineTo(point.x, point.y);
+			}
+			context.stroke();
+			context.restore();
+
+			const trailGradient = context.createLinearGradient(originX, groundY, originX + model.range * scale, groundY - model.maximumHeight * scale);
+			trailGradient.addColorStop(0, "#69d6e3");
+			trailGradient.addColorStop(1, "#ffc765");
+			context.save();
+			context.strokeStyle = trailGradient;
+			context.lineWidth = 3;
+			context.lineCap = "round";
+			context.shadowColor = "rgba(105, 214, 227, 0.55)";
+			context.shadowBlur = 12;
+			context.beginPath();
+			const samples = Math.max(2, Math.ceil(70 * current.x / Math.max(model.range, 0.01)));
+			for (let index = 0; index <= samples; index += 1) {
+				const point = pathPoint(elapsed * index / samples);
+				if (index === 0) context.moveTo(point.x, point.y);
+				else context.lineTo(point.x, point.y);
+			}
+			context.stroke();
+			context.restore();
+
+			const launch = toCanvas(0, model.height);
+			context.save();
+			context.fillStyle = "#d3ef73";
+			context.beginPath();
+			context.arc(launch.x, launch.y, 3.5, 0, Math.PI * 2);
+			context.fill();
+			context.restore();
+
+			const projectile = toCanvas(current.x, current.y);
+			const velocityScale = Math.min(6.2, 104 / Math.max(model.speed, 1));
+			drawArrow(projectile.x, projectile.y, current.velocityX * velocityScale, -current.velocityY * velocityScale, "#69d6e3", "v");
+			drawArrow(projectile.x + 5, projectile.y + 8, 0, Math.min(78, 20 + model.gravity * 3.8), "#ff775e", "g");
+
+			context.save();
+			context.shadowColor = "rgba(255, 119, 94, 0.9)";
+			context.shadowBlur = 22;
+			context.fillStyle = "#ff775e";
+			context.beginPath();
+			context.arc(projectile.x, projectile.y, 8, 0, Math.PI * 2);
+			context.fill();
+			context.shadowBlur = 0;
+			context.fillStyle = "#fff4d8";
+			context.beginPath();
+			context.arc(projectile.x - 2, projectile.y - 2, 2.5, 0, Math.PI * 2);
+			context.fill();
+			context.restore();
+		}
+
+		function updateOutputs(model, current) {
+			document.getElementById("speed-value").textContent = `${model.speed} m/s`;
+			document.getElementById("angle-value").textContent = `${model.angle}°`;
+			document.getElementById("height-value").textContent = `${model.height} m`;
+			document.getElementById("gravity-value").textContent = `${formatNumber(model.gravity, 1)} m/s²`;
+			document.getElementById("range-result").innerHTML = `${formatNumber(model.range, 1)} <small>m</small>`;
+			document.getElementById("apex-result").innerHTML = `${formatNumber(model.maximumHeight, 1)} <small>m</small>`;
+			document.getElementById("flight-result").innerHTML = `${formatNumber(model.flightTime)} <small>s</small>`;
+			document.getElementById("position-x").innerHTML = `${formatNumber(current.x)} <small>m</small>`;
+			document.getElementById("position-y").innerHTML = `${formatNumber(current.y)} <small>m</small>`;
+			document.getElementById("current-speed").innerHTML = `${formatNumber(current.speed)} <small>m/s</small>`;
+			document.getElementById("current-time").innerHTML = `${formatNumber(elapsed)} <small>s</small>`;
+			document.getElementById("clock").textContent = `t = ${formatNumber(elapsed)} s`;
+		}
+
+		function updateTransport() {
+			const icon = document.getElementById("play-icon");
+			const text = document.getElementById("play-text");
+			if (playing) {
+				icon.textContent = "Ⅱ";
+				text.textContent = "Pauza";
+				playButton.title = "Wstrzymaj animację";
+				statusText.textContent = "W locie";
+				status.classList.add("is-playing");
+			} else if (elapsed === 0) {
+				icon.textContent = "▶";
+				text.textContent = "Start";
+				playButton.title = "Uruchom animację";
+				statusText.textContent = "Gotowy";
+				status.classList.remove("is-playing");
+			} else {
+				icon.textContent = "▶";
+				text.textContent = elapsed >= getFlightModel().flightTime ? "Jeszcze raz" : "Wznów";
+				playButton.title = elapsed >= getFlightModel().flightTime ? "Uruchom ponownie" : "Wznów animację";
+				statusText.textContent = elapsed >= getFlightModel().flightTime ? "Lądowanie" : "Pauza";
+				status.classList.remove("is-playing");
+			}
+		}
+
+		function refresh(resetTime = false) {
+			const model = getFlightModel();
+			if (resetTime) elapsed = 0;
+			if (elapsed >= model.flightTime) {
+				elapsed = model.flightTime;
+				playing = false;
+			}
+			const current = positionAt(elapsed, model);
+			updateOutputs(model, current);
+			updateTransport();
+			drawScene(model, current);
+		}
+
+		function animate(timestamp) {
+			if (!lastFrame) lastFrame = timestamp;
+			const deltaSeconds = Math.min((timestamp - lastFrame) / 1000, 0.05);
+			lastFrame = timestamp;
+
+			const model = getFlightModel();
+			if (playing) {
+				elapsed += deltaSeconds * (model.flightTime / 5) * playbackRate;
+				if (elapsed >= model.flightTime) {
+					elapsed = model.flightTime;
+					playing = false;
+				}
+			}
+			const current = positionAt(elapsed, model);
+			updateOutputs(model, current);
+			updateTransport();
+			drawScene(model, current);
+			window.requestAnimationFrame(animate);
+		}
+
+		[speedInput, angleInput, heightInput, gravityInput].forEach((input) => {
+			input.addEventListener("input", () => refresh(true));
+		});
+
+		playButton.addEventListener("click", () => {
+			const model = getFlightModel();
+			if (!playing && elapsed >= model.flightTime) elapsed = 0;
+			playing = !playing;
+			lastFrame = 0;
+			refresh();
+		});
+
+		resetButton.addEventListener("click", () => {
+			elapsed = 0;
+			playing = false;
+			lastFrame = 0;
+			refresh();
+		});
+
+		speedButtons.forEach((button) => {
+			button.addEventListener("click", () => {
+				playbackRate = Number(button.dataset.rate);
+				speedButtons.forEach((option) => option.setAttribute("aria-pressed", String(option === button)));
+			});
+		});
+
+		if ("ResizeObserver" in window) {
+			new ResizeObserver(() => refresh()).observe(canvas);
+		} else {
+			window.addEventListener("resize", () => refresh());
+		}
+
+		refresh();
+		window.requestAnimationFrame(animate);
+	</script>
+</body>
+</html>
